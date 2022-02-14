@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="myStyle.css">
+    <title>Document</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!------ Include the above in your HEAD tag ---------->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
+        integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+
+</head>
+<style>
+    /* .container {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    h3 {
+        border-bottom: 2px solid blue;
+        width: 100%;
+        text-align: center;
+        font-size: 31px;
+    }
+
+    .fieldData {
+
+        display: block;
+        margin: 0 auto;
+        background-color: #9a96b0;
+        width: 50%;
+        padding: 15px;
+    }
+
+    label {
+        position: absolute;
+        margin: 0px 0px 5px -85px;
+        font-size: 18px;
+        color: white;
+    }
+
+    input {
+        padding: 4px;
+        margin: 10px;
+    }
+
+    .errMsg {
+        color: red;
+        margin: -20px 0px 0px -40px;
+    }
+
+    #submit {
+        margin: 10px;
+    } */
+</style>
+
+<body>
+    <div class="container h-100">
+        <div class="d-flex justify-content-center h-100">
+            <div class="user_card">
+                <div class="d-flex justify-content-center">
+                    <div class="brand_logo_container">
+                        <img src="https://cdn.freebiesupply.com/logos/large/2x/pinterest-circle-logo-png-transparent.png"
+                            class="brand_logo" alt="Logo">
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center form_container">
+                    <form>
+                        <div class="input-group mb-2">
+                            <div class="input-group-append">
+                                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                            </div>
+                            <input type="text" class="form-control input_user" id="name" placeholder="Name">
+                        </div>
+                        <span id="erroNameMsg" class="errMsg"></span>
+                        <div class="input-group mb-2">
+                            <div class="input-group-append">
+                                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                            </div>
+                            <input type="email" class="form-control input_user" id="email" placeholder="Email">
+                        </div>
+                        <span id="erroEmailMsg" class="errMsg mt-0"></span>
+                        <div class="input-group mb-2 mt-1">
+                            <div class="input-group-append">
+                                <span class="input-group-text"><i class="fas fa-key"></i></span>
+                            </div>
+                            <input type="password" class="form-control input_pass" id="password" placeholder="Password">
+                        </div>
+                        <span id="erroPasswordMsg" class="errMsg"></span>
+
+                        <div class="form-group">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="customControlInline">
+                                <label class="custom-control-label" for="customControlInline">Remember me</label>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-center mt-3 login_container">
+                            <button type="button" name="button" class="btn login_btn"
+                                onclick="return save();">Register</button>
+                            <br>
+
+                        </div>
+                        <div id="suceesMsg"></div>
+                    </form>
+                </div>
+
+                <div class="mt-2">
+                    <div class="d-flex justify-content-center links">
+                        Already have an account? <a href="login.html" class="ml-2">Login</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="container">
+        <h3>SIGN UP</h3>
+        <div class="fieldData">
+            <form action="">
+                <label for="">Name</label><br>
+                <input type="text" id="name" placeholder="Name">
+                <br>
+                <span id="erroNameMsg" class="errMsg"></span>
+                <br>
+                <label for="">Email</label><br>
+                <input type="email" id="email" placeholder="Email">
+                <br>
+                <span id="erroEmailMsg" class="errMsg"></span>
+                <br>
+                <label for="">Password</label><br>
+                <input type="text" id="password" placeholder="Password">
+                <br>
+                <span id="erroPasswordMsg" class="errMsg"></span>
+                <br>
+                <button type="button" id="submit" onclick="return save()">Submit</button>
+                <br>
+                <span>Already have an account? <a href="login.html">Login</a></span>
+            </form>
+        </div>
+    </div> -->
+    <script>
+        function save() {
+            const name = document.querySelector('#name').value;
+            const email = document.querySelector('#email').value;
+            const password = document.querySelector('#password').value;
+            document.querySelector('#erroNameMsg').innerHTML = ""
+            document.querySelector('#erroEmailMsg').innerHTML = ""
+            document.querySelector('#erroPasswordMsg').innerHTML = ""
+            if (name == "") {
+                document.querySelector('#erroNameMsg').innerHTML = "This field is required"
+            }
+            else if (email == "") {
+                document.querySelector('#erroEmailMsg').innerHTML = "This field is required"
+            }
+            else if (password == "") {
+                document.querySelector('#erroPasswordMsg').innerHTML = "This field is required"
+            }
+            else {
+                localStorage.setItem('name', name)
+                localStorage.setItem('email', email)
+                localStorage.setItem('password', password)
+                document.getElementById('suceesMsg').innerHTML = "You Have successfully register!"
+                setTimeout(function () {
+                    window.location.href = "login.html"
+
+                }, 1000)
+            }
+        }
+    </script>
+</body>
+
+</html>
